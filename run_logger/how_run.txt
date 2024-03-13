@@ -1,0 +1,1 @@
+roslaunch run_logger logger.launch teamName:=Rice challengeType:=navigation

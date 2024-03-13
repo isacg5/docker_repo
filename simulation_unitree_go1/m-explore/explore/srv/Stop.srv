@@ -1,0 +1,4 @@
+# StopRestart.srv
+bool stop
+---
+bool success
