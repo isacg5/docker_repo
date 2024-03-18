@@ -39,5 +39,5 @@ class ControllerNode(object):
 if __name__ == "__main__":
     rospy.init_node('Controller_node')
     contr = ControllerNode()
-    rospy.Subscriber('odom/raw', Odometry ,contr.odomCb)
+    rospy.Subscriber('odometry/imu', Odometry ,contr.odomCb)
     contr.controller()

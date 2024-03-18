@@ -1,6 +1,6 @@
 <launch>
     <arg name="robot_name" default="/"/>
-    <arg name="rviz"       default="false"/>
+    <arg name="rviz"       default="true"/>
     
     <arg if="$(eval arg('robot_name') == '/')"  name="frame_prefix" value="" />
     <arg unless="$(eval arg('robot_name') == '/')" name="frame_prefix" value="$(arg robot_name)/" />
@@ -12,10 +12,10 @@
 
             <!-- Topics -->
             <remap from="scan" to="scan"/>
-            <remap from="cloud" to="/camera/depth/color/points"/>
+            <!-- <remap from="cloud" to="/camera/depth/color/points"/> -->
             <!--<remap from="imu/data" to="imu/data_compass"/>-->
-            <remap from="odom" to="odom"/>
-            <remap from="vel" to="cmd_vel" />
+            <remap from="odom" to="odometry/imu"/>
+            <!-- <remap from="vel" to="cmd_vel" /> -->
 
             <!-- Coordinate frames -->
             <param name="fixed_frame" value="odom" />
@@ -66,6 +66,9 @@
             args="-d $(find go1_simulation)/rviz/navigate.rviz -f $(arg frame_prefix)map"
             output="screen"/>
 
+        
+        <!--<node pkg="tf" type="static_transform_publisher" name="base_footprint" args="0 0 0 0 0 0 map odom 1000" /> -->  
+    
 
         <!-- Explore -->
         <node pkg="explore_lite" type="explore" respawn="false" name="explore" output="screen">
@@ -82,11 +85,11 @@
             <param name="min_frontier_size" value="0.5"/>
         </node>
 
-	<include file="$(find yolo)/launch/run.launch"></include>
-	<include file="$(find run_logger)/launch/logger.launch">
-            <arg name="teamName" value=""/>
-            <arg name="challengeType"   value=""/>
-        </include>
+	<!-- <include file="$(find yolo)/launch/run.launch"></include> -->
+	<!-- <include file="$(find run_logger)/launch/logger.launch">
+            <arg name="teamName" value="unige"/>
+            <arg name="challengeType"   value="navigation"/>
+        </include> -->
 
     </group>
 

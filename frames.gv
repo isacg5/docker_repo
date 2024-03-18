@@ -1,0 +1,12 @@
+digraph G {
+"map" -> "odom"[label="Broadcaster: /slam_gmapping\nAverage rate: 10.204 Hz\nMost recent transform: 1710407774.725 ( -0.049 sec old)\nBuffer length: 4.900 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /lio_sam_imuPreintegration\nAverage rate: 499.171 Hz\nMost recent transform: 1710404174.678 ( 3599.997 sec old)\nBuffer length: 4.978 sec\n"];
+"odom" -> "base_footprint"[label="Broadcaster: /laser_scan_matcher_node\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1710407774.676 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "imu_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1710407774.676 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "velodyne"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1710407774.676 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "lidar_link"[label="Broadcaster: /lio_sam_mapOptmization\nAverage rate: 5.208 Hz\nMost recent transform: 1710404174.405 ( 3600.271 sec old)\nBuffer length: 4.800 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1710407774.676"[ shape=plaintext ] ;
+ }->"map";
+}
